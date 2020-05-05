@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body onload="pickANumber">
-    <input>
+<h1> Quess a number between 1 and 100! </h1>
+<body onload="pickANumber()">
+    
+    <form>
+        <input type="text" id="quessField">
+        <button type="button" onclick="quessButtonPressed()" id="quessButton">Quess</button>
+        <p id="messageBox"></p>
+        <p id="wrongQuess"></p>
+    </form>
+    
 </body>
+<script src="main.js"></script>
 </html>
