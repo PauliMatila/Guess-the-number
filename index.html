@@ -7,13 +7,12 @@
 </head>
 <h1> Quess a number between 1 and 100! </h1>
 <body onload="start()">
-    
-    <form>
-        <input type="text" id="quessField">
-        <button type="button" onclick="quessButtonPressed()" id="quessButton">Quess</button>
-        <p id="messageBox"></p>
-        <p id="wrongQuess"></p>
-    </form>
+      
+    <input type="text" id="quessField">
+    <button type="button" onclick="quessButtonPressed()" id="quessButton">Quess</button>
+    <button onClick="window.location.reload();">New game!</button>
+    <p id="messageBox"></p>
+    <p id="wrongQuess"></p>   
     
 </body>
 <script src="main.js"></script>

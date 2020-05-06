@@ -60,16 +60,17 @@ function checkIfCorrect(number)
 {
     if (secretNumber === number)
     {
-        document.getElementById("messageBox").innerHTML = "Winner winner, chicken dinner! amount of quesses was: " + quessedNumbers.length;
+        document.getElementById("messageBox").innerHTML = "Winner winner, chicken dinner! Winning number was: " + 
+        secretNumber.toString() + " Amount of quesses: " + quessedNumbers.length;
     }
     else if (secretNumber < number)
     {
-        document.getElementById("messageBox").innerHTML = "Hint! smaller number.";
+        document.getElementById("messageBox").innerHTML = "Hint! Smaller number.";
         document.getElementById("wrongQuess").innerHTML = quessedNumbers.toString();
     }
     else
     {
-        document.getElementById("messageBox").innerHTML = "Hint! bigger number.";
+        document.getElementById("messageBox").innerHTML = "Hint! Bigger number.";
         document.getElementById("wrongQuess").innerHTML = quessedNumbers.toString();
     }
     
