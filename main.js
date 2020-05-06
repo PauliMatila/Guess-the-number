@@ -1,14 +1,20 @@
+const quessField = document.querySelector(".quessField");
+const wrongGuess = document.querySelector(".wrongGuess");
+const messageBox = document.querySelector(".messageBox");
+
+
 function start()
 {   
     secretNumber = Math.floor(Math.random()*100+1);  
 }
 
 var secretNumber;
-var quessedNumbers = [];
+var quessedNumbers = new Array();
+var resetButton;
     
 function quessButtonPressed()
 {
-    var quessed = parseInt(document.querySelector("#quessField").value);  
+    var quessed = Number(quessField.value);
     if (isValidQuess(quessed))
     {
         checkIfCorrect(quessed);
@@ -16,17 +22,17 @@ function quessButtonPressed()
     document.querySelector("#quessField").value = "";
 }
 
-function isValidQuess(number)
+function isValidQuess(quessed)
 {
-    if (!isNaN(number))
+    if (!isNaN(quessed))
     {
-        if (number <= 100 && number > 0)
+        if (quessed <= 100 && quessed > 0)
         {
             if (quessedNumbers.length > 0)
             {            
-                if (!quessedNumbers.includes(number))
+                if (!quessedNumbers.includes(quessed))
                 {
-                    quessedNumbers.push(number);
+                    quessedNumbers.push(quessed);
                     document.getElementById("messageBox").innerHTML = "";
                     return true;
                 }
@@ -38,7 +44,7 @@ function isValidQuess(number)
             }
             else
             {
-                quessedNumbers.push(number);
+                quessedNumbers.push(quessed);
                 document.getElementById("messageBox").innerHTML = "";
                 return true;
             }
@@ -54,24 +60,44 @@ function isValidQuess(number)
         document.getElementById("messageBox").innerHTML = "Not a number! You fooooooool!";
         return false;
     }
+    var x = quessedNumbers
 }
 
-function checkIfCorrect(number)
+function checkIfCorrect(quessed)
 {
-    if (secretNumber === number)
+    if (secretNumber === quessed)
     {
         document.getElementById("messageBox").innerHTML = "Winner winner, chicken dinner! Winning number was: " + 
         secretNumber.toString() + " Amount of quesses: " + quessedNumbers.length;
+        setGameOver();
     }
-    else if (secretNumber < number)
+    else if (secretNumber < quessed)
     {
         document.getElementById("messageBox").innerHTML = "Hint! Smaller number.";
-        document.getElementById("wrongQuess").innerHTML = quessedNumbers.toString();
+        document.getElementById("demo").innerHTML = quessedNumbers.toString();
     }
     else
     {
         document.getElementById("messageBox").innerHTML = "Hint! Bigger number.";
-        document.getElementById("wrongQuess").innerHTML = quessedNumbers.toString();
-    }
-    
+        document.getElementById("demo").innerHTML = quessedNumbers.toString();
+    } 
+}
+
+function setGameOver() 
+{
+    resetButton = document.createElement("button");
+    resetButton.textContent = "Start new game";
+    document.body.appendChild(resetButton);
+    resetButton.addEventListener("click", resetGame);
+}
+
+function resetGame() 
+{
+    resetButton.parentNode.removeChild(resetButton);
+    quessedNumbers = new Array();
+    var x = quessedNumbers.toString();
+    document.getElementById("demo").innerHTML = x;
+    quessField.value = "";
+    messageBox.textContent = "";
+    secretNumber = Math.floor(Math.random()*100+1); 
 }

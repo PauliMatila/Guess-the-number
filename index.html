@@ -8,11 +8,12 @@
 <h1> Quess a number between 1 and 100! </h1>
 <body onload="start()">
       
-    <input type="text" id="quessField">
+    <input type="text" id="quessField" class="quessField">
     <button type="button" onclick="quessButtonPressed()" id="quessButton">Quess</button>
-    <button onClick="window.location.reload();">New game!</button>
-    <p id="messageBox"></p>
-    <p id="wrongQuess"></p>   
+    <!-- <button onClick="window.location.reload();">New game!</button> -->
+    <p id="messageBox" class="messageBox"></p>
+    <p id="wrongGuess" class="wrongGuess"></p>
+    <p id="demo"></p>
     
 </body>
 <script src="main.js"></script>
